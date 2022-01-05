@@ -1,16 +1,36 @@
 <?php
 
-use App\Http\Controllers\User\ComponentTestController;
-use App\Http\Owner\Controllers\User\LifeCycleTestController;
-use App\Http\Owner\Controllers\User\Auth\AuthenticatedSessionController;
-use App\Http\Owner\Controllers\User\Auth\ConfirmablePasswordController;
-use App\Http\Owner\Controllers\User\Auth\EmailVerificationNotificationController;
-use App\Http\Owner\Controllers\User\Auth\EmailVerificationPromptController;
-use App\Http\Owner\Controllers\User\Auth\NewPasswordController;
-use App\Http\Owner\Controllers\User\Auth\PasswordResetLinkController;
-use App\Http\Owner\Controllers\User\Auth\RegisteredUserController;
-use App\Http\Owner\Controllers\User\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\ComponentTestController;
+use App\Http\Owner\Controllers\Admin\LifeCycleTestController;
+use App\Http\Owner\Controllers\Admin\Auth\AuthenticatedSessionController;
+use App\Http\Owner\Controllers\Admin\Auth\ConfirmablePasswordController;
+use App\Http\Owner\Controllers\Admin\Auth\EmailVerificationNotificationController;
+use App\Http\Owner\Controllers\Admin\Auth\EmailVerificationPromptController;
+use App\Http\Owner\Controllers\Admin\Auth\NewPasswordController;
+use App\Http\Owner\Controllers\Admin\Auth\PasswordResetLinkController;
+use App\Http\Owner\Controllers\Admin\Auth\RegisteredUserController;
+use App\Http\Owner\Controllers\Admin\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
                 ->middleware('guest')
@@ -64,3 +84,5 @@ Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store']
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->middleware('auth')
                 ->name('logout');
+
+
