@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Owner\ComponentTestController;
-use App\Http\Controllers\Owner\LifeCycleTestController;
 use App\Http\Controllers\Owner\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Owner\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Owner\Auth\EmailVerificationNotificationController;
@@ -29,7 +27,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('ownerdashboard');
+    return view('owner.dashboard');
 })->middleware(['auth:owners'])->name('dashboard');
 
 
