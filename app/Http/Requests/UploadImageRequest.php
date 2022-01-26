@@ -27,6 +27,7 @@ class UploadImageRequest extends FormRequest
         [
             //
             'image'=>'image|mimes:jpg,jpeg,png|max:2048',
+            'files.*.image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ];
     }
     public function messages(){
