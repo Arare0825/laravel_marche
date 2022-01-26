@@ -20,7 +20,7 @@ class CreateImagesTable extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->string('filename');
-            $table->string('title')->nullable;
+            $table->string('title')->nullable();
             $table->timestamps();
         });
     }
