@@ -20,6 +20,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 // window.Pusher = require('pusher-js');
 
+import MicroModal from 'micromodal';  // es6 module
+
+MicroModal.init({
+    disableScroll: true
+});
+
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',
 //     key: process.env.MIX_PUSHER_APP_KEY,
