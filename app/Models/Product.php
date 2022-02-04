@@ -8,10 +8,30 @@ use App\Models\Shop;
 use App\Models\secondaryCategory;
 use App\Models\Image;
 use App\Models\Stock;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class Product extends Model
 {
     use HasFactory;
+
+    
+    protected $fillable = [
+        'shop_id',
+        'name',
+        'information',
+        'price',
+        'is_selling',
+        'sort_order',
+        'secondary_category_id',
+        'image1',
+        'image2',
+        'image3',
+        'image4',
+        
+
+    ];
+
 
     
 public function shop(){
