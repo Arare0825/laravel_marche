@@ -29,7 +29,8 @@ Route::middleware('auth:users')->group(function(){
 Route::get('show/{item}',[ItemController::class,'show'])->name('items.show');
 
 Route::prefix('cart')->middleware('auth:users')->group(function(){
-    Route::post('add',[cartController::class,'add'])->name('cart.add');
+    Route::post('add',[CartController::class,'add'])->name('cart.add');
+    Route::get('/',[CartController::class,'index'])->name('cart.index');
 });
 
 // Route::get('/dashboard', function () {
