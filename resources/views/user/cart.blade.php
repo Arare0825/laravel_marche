@@ -38,7 +38,6 @@
                     @endforeach
                    @else
                    カートに商品が入っていません。
-
                    @endif
                 </div>
             </div>
