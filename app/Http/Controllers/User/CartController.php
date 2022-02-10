@@ -84,7 +84,6 @@ class CartController extends Controller
                 'quantity'=>$product->pivot->quantity * -1 
             ]);
 }
-dd('test');
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
 
         $session = $checkout_session = \Stripe\Checkout\Session::create([
