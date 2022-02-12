@@ -8,6 +8,8 @@ use App\Models\Product;
 use App\Models\Stock;
 use App\Models\PrimaryCategory;
 use Illuminate\Support\Facades\DB; //クエリビルダ
+use Illuminate\Support\Facades\Mail;//メールファサード
+use App\Mail\TestMail;
 
 
 class ItemController extends Controller
@@ -37,8 +39,12 @@ class ItemController extends Controller
         $categories = PrimaryCategory::with('secondary')
         ->get();
 
+        Mail::to('test@example.com')//受信箱の指定
+        ->send(new TestMail());//Mailableクラス
+
         $products = Product::availableItems()
         ->selectCategory($request->category ?? '0')
+        ->searchKeyword($request->keyword)
         ->sortOrder($request->sort)
         ->paginate($request->pagination ?? '20');
 
