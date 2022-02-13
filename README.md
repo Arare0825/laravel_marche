@@ -49,3 +49,16 @@ storage/app/public/productsフォルダ内に保存すると表示されます�
 (productsフォルダが無い場合は作成してください)
 
 ショップの画像も表示する場合はstorage/app/public/shopsフォルダを作成し画像を保存してください
+
+## section7の補足
+
+決済のテストとしてstripeを利用しています。
+必要な場合は.envにstripeの情報を追記してください
+
+## section8の補足
+
+メールのテストをしてmailtrap利用しています。
+必要な場合は.envにmailtrapの情報を追記してください
+
+メール処理には時間がかかるのでキューを使用しています。
+必要な場合はphp artisan queue:workでワーカーを立ち上げて動作確認するようにしてください。
