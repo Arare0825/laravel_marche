@@ -10,6 +10,7 @@ use App\Models\PrimaryCategory;
 use Illuminate\Support\Facades\DB; //クエリビルダ
 use Illuminate\Support\Facades\Mail;//メールファサード
 use App\Mail\TestMail;
+use App\Jobs\SendThanksMail;
 
 
 class ItemController extends Controller
@@ -39,8 +40,11 @@ class ItemController extends Controller
         $categories = PrimaryCategory::with('secondary')
         ->get();
 
-        Mail::to('test@example.com')//受信箱の指定
-        ->send(new TestMail());//Mailableクラス
+        // Mail::to('test@example.com')//受信箱の指定
+        // ->send(new TestMail());//Mailableクラス
+
+        //非同期処理
+        SendThanksMail::dispatch();
 
         $products = Product::availableItems()
         ->selectCategory($request->category ?? '0')
