@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Owner; //Eloquent　エロくアント
-use App\Models\Shop; //Eloquent　エロくアント
+use App\Models\Owner; //Eloquent
+use App\Models\Shop; //Eloquent
 use Illuminate\Support\Facades\DB; //クエリビルダ
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -42,7 +42,7 @@ class OwnersController extends Controller
         // var_dump($q_first);
         // dd($e_all, $q_get, $q_first, $c_test);
 
-        $owners = Owner::select('id','name','email','created_at')->paginate(3);
+        $owners = Owner::select('id','name','email','created_at')->paginate(5);
 
         return view('admin.owners.index', compact('owners'));
     }
